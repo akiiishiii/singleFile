@@ -1,0 +1,12 @@
+# exe files
+*.exe
+
+## test input/output files
+#*.in
+#*.out
+
+#ipch files
+#/.vscode/ipch
+
+# tempCodeRunnerFiles
+#tempCodeRunnerFile.*
