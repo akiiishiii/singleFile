@@ -5,10 +5,13 @@
 int main(int argc, char const *argv[]) {
     int a[6] = {9, 8, 7, 6, 5, 4};
     int const MAXN = 6;
-    for (int i = 0; i < MAXN - 1; i++)
-        for (int j = 0; j < MAXN - i - 1; j++)
-            if (a[j] > a[j + 1])
-                std::swap(a[j], a[j + 1]);
+    for (int j = 0, min; j < MAXN; j++) {
+        min = j;
+        for (int i = j + 1; i < MAXN; i++)
+            if (a[min] > a[i])
+                min = i;
+        std::swap(a[min], a[j]);
+    }
     for (int i = 0; i < MAXN; i++)
         std::cout << a[i] << ' ';
     std::cout << '\n';
