@@ -17,4 +17,4 @@ int fun(int num) {
         num /= 10;
     }
     return ret;
-};
+}
