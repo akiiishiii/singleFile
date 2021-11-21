@@ -14,10 +14,10 @@ struct Compare : public std::binary_function<std::string, std::string, bool> {
 };
 
 int main(int argc, char const *argv[]) {
+    std::string str = "Apple$12pear  watermelon $  #  Banana";
     std::priority_queue<std::string, std::vector<std::string>, Compare> h;
-    char tmpc;
     std::string tmps;
-    while ((tmpc = std::cin.get()) != '\n') {
+    for (auto tmpc : str) {
         if (isalpha(tmpc))
             tmps.push_back(tmpc);
         else if (!tmps.empty()) {
