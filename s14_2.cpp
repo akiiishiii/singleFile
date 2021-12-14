@@ -35,7 +35,7 @@ Number::~Number() {
 void Number::fun() {
     for (int i = 3, j; 1; i++) {
         j = 0;
-        while (notPrime(j) && j < n)
+        while (notPrime(i) && j < n)
             p[j++] = i++;
         if (j == n)
             break;
