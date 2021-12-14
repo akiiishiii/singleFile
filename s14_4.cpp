@@ -24,3 +24,7 @@ int main(int argc, char const *argv[]) {
 Circle::Circle() {}
 
 Circle::~Circle() {}
+
+void Circle::findMax() {}
+
+void Circle::show() {}
