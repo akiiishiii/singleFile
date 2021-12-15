@@ -1,4 +1,5 @@
 // s14_4.cpp
+#include <algorithm>
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
@@ -11,20 +12,44 @@ class Circle {
 
   public:
     Circle();
-    ~Circle();
+    ~Circle() = default;
     void findMax();
     void show();
 };
 
 int main(int argc, char const *argv[]) {
-    /* code */
+    srand(unsigned(time(nullptr)));
+    Circle cir;
+    cir.findMax();
+    cir.show();
     return 0;
 }
 
-Circle::Circle() {}
+Circle::Circle() {
+    for (int i = 0; i < 20; i++)
+        num[i] = rand() % 100;
+}
 
-Circle::~Circle() {}
+void Circle::findMax() {
+    int arr[20];
+    for (int i = 0; i < 20; i++)
+        arr[i] = i;
+    std::sort(arr, arr + 20, [&](int x, int y) -> bool {
+        return num[x] + num[(x + 1) % 20] + num[(x + 2) % 20] +
+                   num[(x + 3) % 20] <
+               num[x] + num[(x + 1) % 20] + num[(x + 2) % 20] +
+                   num[(x + 3) % 20];
+    });
+}
 
-void Circle::findMax() {}
-
-void Circle::show() {}
+void Circle::show() {
+    for (int i = 0; i < 20; i++)
+        std::cout << num[i] << ' ';
+    std::cout << "\nMax=" << sumMax << '\n';
+    for (int i = 0; i < 4; i++)
+        std::cout << max[i] << ' ';
+    std::cout << "\nMin=" << sumMin << '\n';
+    for (int i = 0; i < 4; i++)
+        std::cout << min[i] << ' ';
+    std::cout << "\n";
+}
