@@ -18,7 +18,7 @@ class Circle {
 };
 
 int main(int argc, char const *argv[]) {
-    srand(unsigned(time(nullptr)));
+    srand(/*unsigned(time(nullptr))*/ 0);
     Circle cir;
     cir.findMax();
     cir.show();
@@ -28,6 +28,7 @@ int main(int argc, char const *argv[]) {
 Circle::Circle() {
     for (int i = 0; i < 20; i++)
         num[i] = rand() % 100;
+    sumMax = sumMin = 0;
 }
 
 void Circle::findMax() {
@@ -36,10 +37,16 @@ void Circle::findMax() {
         arr[i] = i;
     std::sort(arr, arr + 20, [&](int x, int y) -> bool {
         return num[x] + num[(x + 1) % 20] + num[(x + 2) % 20] +
-                   num[(x + 3) % 20] <
-               num[x] + num[(x + 1) % 20] + num[(x + 2) % 20] +
-                   num[(x + 3) % 20];
+                   num[(x + 3) % 20] >
+               num[y] + num[(y + 1) % 20] + num[(y + 2) % 20] +
+                   num[(y + 3) % 20];
     });
+    for (int i = 0; i < 4; i++) {
+        max[i] = num[(arr[0] + i) % 20];
+        min[i] = num[(arr[19] + i) % 20];
+        sumMax += num[(arr[0] + i) % 20];
+        sumMin += num[(arr[19] + i) % 20];
+    }
 }
 
 void Circle::show() {
