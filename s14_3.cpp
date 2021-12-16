@@ -22,7 +22,7 @@ int main(int argc, char const *argv[]) {
 }
 
 String::String(char const *str) {
-    size_t len = strlen(str);
+    size_t len = strlen(str) + 1;
     s1 = new char[len];
     s2 = new char[len];
     strcpy(s1, str);
